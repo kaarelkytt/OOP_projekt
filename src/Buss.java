@@ -12,7 +12,7 @@ public class Buss {
     }
 
     public void bussiplaan(){
-        // V‰ljastab bussi kohtade plaani, kus nulliga on m‰rgistatud ostetud kohad
+        // V√§ljastab bussi kohtade plaani, kus nulliga on m√§rgistatud ostetud kohad
         // Paarituarvulised kohad on alati akna all
         System.out.println("Bussi kohtade plaan:");
         for (int i = 0; i < kohad.length/2; i++) {
@@ -33,7 +33,7 @@ public class Buss {
 
     public boolean piisavalt_kohti(int kohtade_arv){
         // Antud soovitud kohtade arv
-        // Tagastab tıev‰‰rtuse, kas bussis on nii palju vabu kohti
+        // Tagastab t√µev√§√§rtuse, kas bussis on nii palju vabu kohti
         return vabad_kohad() >= kohtade_arv;
     }
 
@@ -68,20 +68,26 @@ public class Buss {
     public String ost(int kohad){
         // Paneb bussis kinni vastava arvu kohti
         // Kohti valitakse nii, et paarisarvuline seltskond saab alati koos istuda
+        // Stringbuilder, et edastada ostja koha numbrid
+        StringBuilder sb = new StringBuilder();
         if (piisavalt_kohti(kohad)){
             if (kohad % 2 == 1){
-                koht_kinni(esimene_vaba_koht());
+                int esimene = esimene_vaba_koht();
+                sb.append(esimene+ " ");
+                koht_kinni(esimene);
                 int ev = esimene_vaba_koht();
                 for (int i = ev; i < ev + kohad - 1; i++) {
+                    sb.append(i+ " ");
                     koht_kinni(i);
                 }
             } else{
                 int ev = esimene_vaba_paar();
                 for (int i = ev; i < ev + kohad; i++) {
+                    sb.append(i+ " ");
                     koht_kinni(i);
                 }
             }
-            return "Teie kohad on kinnitatud";
+            return "Teie kohad on kinnitatud. Teie kohad on: " + sb;
         }
 
         else
