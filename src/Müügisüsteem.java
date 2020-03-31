@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Müügisüsteem {
     public static void müü(Buss buss, int kohtadeArv){
+        // Müüakse antud bussist kindel arv kohti piletiostjale ning
+        // väljastatakse ostu informatsioon (kohad, hind).
+        // Kui bussis pole piisavalt kohti, väljastatakse vastav teade
+        // ja müügitehing jääb katki.
         if (buss.piisavalt_kohti(kohtadeArv)){
             Piletiostja ostja = uusOstja();
             ostja.osta(kohtadeArv, buss);
@@ -28,6 +32,7 @@ public class Müügisüsteem {
     }
 
     public static Piletiostja uusOstja(){
+        // Loob uue ostja vastavalt kliendilt saadud andmetele (nimi ja email)
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Sisestage oma nimi: ");
