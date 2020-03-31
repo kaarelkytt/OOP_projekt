@@ -2,35 +2,25 @@ import java.util.Scanner;
 
 public class Proov {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Buss b1 = new Buss(5, 12);
 
-        Buss b1 = new Buss(5);
+        System.out.println("\nTeretulemast piletiostu keskkonda!\n");
+        System.out.println("Ostes vähemalt 4 piletit on teil võimalus saada üks pilet tasuta!");
+        System.out.println("Mida rohkem pileteid ostate seda suurem on võidu võimalus.");
 
-        b1.bussiplaan();
-        while (true) {
-            int arv = piletiteArv(b1); // saab ostjalt kohtade arvu
-            String kohad = b1.ost(arv); // paneb nii palju kohti kinni kui ostija soovis(kui vÃµimalik) ja tagastab, kas kohad, mis said kinni pandud vÃµi "Pole piisavalt vabu kohti"
-            System.out.println(kohad);
-
-            // Kui kohtade arv, mis ostija sisestas oli liiga palju siis programmi tÃ¶Ã¶ lÃµppeb
-            if (kohad.equals("Pole piisavalt vabu kohti.")) {
-                break;
-            }
-
-            // Kontrollib, kas vabu kohti on veel, kui ei siis lÃµpetab
-            if (b1.vabad_kohad() == 0) {
-                System.out.println("Vabu kohti rohkem ei ole.");
-                break;
-            }
-            System.out.println("\n" + "\u001B[36m" + "JÃ¤rgmine ostija" + "\u001B[0m");
-            //b1.bussiplaan();
+        while (b1.vabad_kohad() != 0) {
+            System.out.println("\n" + "\u001B[36mJärgmine ostja\u001B[0m");
+            b1.bussiplaan();
+            System.out.println("Mitu piletit soovite?");
+            int arv = Integer.parseInt(sc.nextLine());
+            Müügisüsteem.müü(b1, arv);
         }
-    }
-
-    public static int piletiteArv(Buss buss) {
-        Scanner piletid = new Scanner(System.in);
-        System.out.println("Mitu piletit soovite?");
-
-        int arv = Integer.parseInt(piletid.nextLine());
-        return arv;
+        System.out.println("\nRohkem vabu kohti ei ole!\n");
+        System.out.println("Bussireisi tulu: " + b1.tulu());
+        System.out.println("Reisijad:");
+        for (Piletiostja reisija: b1.getReisijad()) {
+            System.out.println("    " + reisija);
+        }
     }
 }
