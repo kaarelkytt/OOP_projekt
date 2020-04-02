@@ -6,7 +6,7 @@ public class Piletiostja {
     private String email;
     private List<Integer> kohad = new ArrayList<>();
     private double summa;
-    private boolean võit;
+    private boolean vÃµit;
 
     public Piletiostja(String nimi, String email) {
         this.nimi = nimi;
@@ -29,8 +29,8 @@ public class Piletiostja {
         return summa;
     }
 
-    public boolean isVõit() {
-        return võit;
+    public boolean isVÃµit() {
+        return vÃµit;
     }
 
     @Override
@@ -39,22 +39,22 @@ public class Piletiostja {
                 "nimi: " + nimi +
                 ", email: " + email +
                 ", kohad: " + kohad +
-                ", summa: " + summa +
-                ", võit: " + võit +
+                ", summa: " + summa + " eurot" +
+                ", vÃµit: " + vÃµit +
                 ')';
     }
 
     public void osta(int piletiteArv, Buss buss) {
         // Fikseerib piletiostja kohad, piletite maksumuse
-        // ja loosib, kas ta on võitnud tasuta pileti
+        // ja loosib, kas ta on vÃµitnud tasuta pileti
         this.kohad = buss.ost(piletiteArv);
         if (piletiteArv > 3 && Math.random() < 0.05 * (piletiteArv - 3)) {
-            System.out.println("\u001B[31m Te võitsite tasuta koha! \u001B[0m");
+            System.out.println("\u001B[31m Te vÃµitsite tasuta koha! \u001B[0m");
             this.summa = (piletiteArv - 1) * buss.getPiletiHind();
-            this.võit = true;
+            this.vÃµit = true;
         } else {
             this.summa = piletiteArv * buss.getPiletiHind();
-            this.võit = false;
+            this.vÃµit = false;
         }
     }
 }
