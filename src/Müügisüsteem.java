@@ -1,12 +1,12 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class Müügisüsteem {
-    public static void müü(Buss buss, int kohtadeArv){
-        // Müüakse antud bussist kindel arv kohti piletiostjale ning
-        // väljastatakse ostu informatsioon (kohad, hind).
-        // Kui bussis pole piisavalt kohti, väljastatakse vastav teade
-        // ja müügitehing jääb katki.
+public class MÃ¼Ã¼gisÃ¼steem {
+    public static void mÃ¼Ã¼(Buss buss, int kohtadeArv){
+        // MÃ¼Ã¼akse antud bussist kindel arv kohti piletiostjale ning
+        // vÃ¤ljastatakse ostu informatsioon (kohad, hind).
+        // Kui bussis pole piisavalt kohti, vÃ¤ljastatakse vastav teade
+        // ja mÃ¼Ã¼gitehing jÃ¤Ã¤b katki.
         if (buss.piisavalt_kohti(kohtadeArv)){
             Piletiostja ostja = uusOstja();
             ostja.osta(kohtadeArv, buss);
@@ -14,13 +14,13 @@ public class Müügisüsteem {
             List<Integer> kohad = ostja.getKohad();
 
             if (kohtadeArv == 1)
-                System.out.print(ostja.getNimi() + ", Teie koht on kinnitatud. Koha number on: ");
+                System.out.print(ostja.getNimi() + ", teie koht on kinnitatud. Koha number on: ");
             else
-                System.out.print(ostja.getNimi() + ", Teie kohad on kinnitatud. Kohtade numbrid on: ");
+                System.out.print(ostja.getNimi() + ", teie kohad on kinnitatud. Kohtade numbrid on: ");
 
             for (int koht: kohad)
                 System.out.print(koht + " ");
-            if (ostja.isVõit())
+            if (ostja.isVÅ‘it())
                 System.out.printf("\nTasuda tuleb: %.2f \u001B[31m- %.2f\u001B[0m = %.2f eurot\n",
                         ostja.getSumma()+buss.getPiletiHind(), buss.getPiletiHind(), ostja.getSumma());
             else
