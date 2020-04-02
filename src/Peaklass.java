@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Proovklass {
+public class Peaklass {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Buss b1 = new Buss(5, 12);
