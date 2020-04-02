@@ -6,21 +6,21 @@ public class Proov {
         Buss b1 = new Buss(5, 12);
 
         System.out.println("\nTeretulemast piletiostu keskkonda!\n");
-        System.out.println("Ostes vähemalt 4 piletit on teil võimalus saada üks pilet tasuta!");
-        System.out.println("Mida rohkem pileteid ostate seda suurem on võidu võimalus.");
+        System.out.println("Ostes vÃ¤hemalt 4 piletit on teil vÃµimalus saada Ã¼ks pilet tasuta!");
+        System.out.println("Mida rohkem pileteid ostate seda suurem on vÃµidu vÃµimalus.");
 
         while (b1.vabad_kohad() != 0) {
             // Kuni on vabu kohti saab neid ka osta.
-            System.out.println("\n" + "\u001B[36mJärgmine ostja\u001B[0m");
+            System.out.println("\n" + "\u001B[36mJÃ¤rgmine ostja\u001B[0m");
             b1.bussiplaan();
             System.out.println("Mitu piletit soovite?");
-            int arv = Integer.parseInt(sc.nextLine());  // Kasutajalt küsitakse kohtade arv, mida ta soovib osta
-            Müügisüsteem.müü(b1, arv);                  // Ostjale müüjakse bussis b1 vastav arv kohti
+            int arv = Integer.parseInt(sc.nextLine());  // Kasutajalt kÃ¼sitakse kohtade arv, mida ta soovib osta
+            MÃ¼Ã¼gisÃ¼steem.mÃ¼Ã¼(b1, arv);                  // Ostjale mÃ¼Ã¼jakse bussis b1 vastav arv kohti
         }
 
         System.out.println("\n\u001B[36mRohkem vabu kohti ei ole!\u001B[0m\n");
-        // Kui kõik kohad on müüdud, väljastatakse reisi andmed
-        System.out.println("Bussireisi tulu: " + b1.tulu());
+        // Kui kÃµik kohad on mÃ¼Ã¼dud, vÃ¤ljastatakse reisi andmed
+        System.out.println("Bussireisi tulu: " + b1.tulu() + " eurot");
         System.out.println("Reisijad:");
         for (Piletiostja reisija: b1.getReisijad()) {
             System.out.println("    " + reisija);
